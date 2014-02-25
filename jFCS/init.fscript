@@ -1,0 +1,43 @@
+distancesDomain: domain integer 0 to 1300 step 1;
+angleDomain: domain integer -90 to 90 step 1;
+accDomain: domain integer -100 to 100 step 1;
+speedDomain: domain integer 0 to 100 step 1;
+sDomain: domain integer 0 to 1 step 1;
+
+speedSlow: fuzzyset @ speedDomain is l(20,40);
+speedMedium: fuzzyset @ speedDomain is lambda(20,50,70);
+speedFast: fuzzyset @ speedDomain is gamma(50,70);
+
+Lnear: fuzzyset @ distancesDomain is l(20, 50);
+Lmedium: fuzzyset @ distancesDomain is lambda(20,50,80);
+Lfar: fuzzyset @ distancesDomain is gamma(50,80);
+
+Dnear: fuzzyset @ distancesDomain is l(20, 50);
+Dmedium: fuzzyset @ distancesDomain is lambda(20,50,80);
+Dfar: fuzzyset @ distancesDomain is gamma(50,80);
+
+LKsafe: fuzzyset @ distancesDomain is gamma(20, 100);
+LKunsafe: fuzzyset @ distancesDomain is l(20, 50);
+
+DKsafe: fuzzyset @ distancesDomain is gamma(20, 100);
+DKunsafe: fuzzyset @ distancesDomain is l(20, 50);
+
+S0: fuzzyset @ sDomain is {1/0};
+S1: fuzzyset @ sDomain is {1/1};
+
+accZero: fuzzyset @ accDomain is lambda(-10, 0, 10);
+accFSmall: fuzzyset @ accDomain is lambda(0, 10, 20);
+accBSmall: fuzzyset @ accDomain is lambda(-20, -10, 0);
+accFBig: fuzzyset @ accDomain is gamma(10, 20);
+accBBig: fuzzyset @ accDomain is l(-20, -10);
+
+angleZero: fuzzyset @ accDomain is lambda(-25, 0, 25);
+anglePSmall: fuzzyset @ accDomain is lambda(0, 25, 50);
+angleNSmall: fuzzyset @ accDomain is lambda(-50, -25, 0);
+anglePMedium: fuzzyset @ accDomain is lambda(25, 45, 65);
+angleNMedium: fuzzyset @ accDomain is lambda(-65, -45, -25);
+anglePBig: fuzzyset @ accDomain is gamma(45, 90);
+angleNBig: fuzzyset @ accDomain is l(-90, -45);
+
+acc: fuzzyset @ accDomain is {};
+kormilo: fuzzyset @ angleDomain is {};
